@@ -35,7 +35,7 @@ node{
               sh"   git config --global user.name \"sumitbhardwajji\" "
               sh"   git config --global user.email \"sumitbhardwa7303@gmail.com\" "
               sh "git checkout $branch"
-              sh"   echo 'testing sumit bhardwajji ' > sumit2.txt "
+              sh"   echo 'testing sumit bhardjji ' > sumit2.txt "
               sh "git status"
               sh "ls | cat sumit2.txt"
               sh"   git add . "
