@@ -42,6 +42,7 @@ node{
               sh"   git commit -m \"file\" "
               def l = env.Branch.tokenize("/")
               l = l[1]
+              sh" git push https://${username}:${password}@github.com/sumitbhardwajji/new.git HEAD:refs/heads/$l "
               def change=changelog()
               print(change)
               
