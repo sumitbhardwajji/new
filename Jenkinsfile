@@ -38,7 +38,7 @@ node{
               sh"   echo 'testing sumit ' > sumit2.txt "
               sh "git status"
               sh "ls | cat sumit2.txt"
-              sh"   git add sumit2.txt "
+              sh"   git add . "
               sh"   git commit -m \"intial\" "
               def l = env.Branch.tokenize("/")
               l = l[1]
