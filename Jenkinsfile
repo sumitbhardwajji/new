@@ -18,6 +18,9 @@ def changelog(){
 
 
 node{
+ 
+  try {
+  
     stage("check"){
         
         v = "origin/release-sprint-22"
@@ -35,7 +38,7 @@ node{
               sh"   git config --global user.name \"sumitbhardwajji\" "
               sh"   git config --global user.email \"sumitbhardwa7303@gmail.com\" "
               sh "git checkout $branch"
-              sh"   echo 'testing sumit bhardjji ' > sumit2.txt "
+              sh"   echo 'testing sumit bhardwaj  ji ' > sumit2.txt "
               sh "git status"
               sh "ls | cat sumit2.txt"
               sh"   git add . "
@@ -43,7 +46,8 @@ node{
               def l = env.Branch.tokenize("/")
               l = l[1]
               sh" git push https://${username}:${password}@github.com/sumitbhardwajji/new.git HEAD:refs/heads/$l "
-
+             
+          checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sumitbhardwajji/notejam.git']]])
               
                 
             
@@ -53,5 +57,11 @@ node{
               def change=changelog()
               print(change)
   
+  }
+  }catch(error){
+    stage("error"){
+          def change=changelog()
+              print(change)
+    }
   }
 }
