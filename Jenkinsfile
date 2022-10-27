@@ -38,7 +38,7 @@ node{
               sh"   git config --global user.name \"sumitbhardwajji\" "
               sh"   git config --global user.email \"sumitbhardwa7303@gmail.com\" "
               sh "git checkout $branch"
-              sh"   echo 'testing sumit bhardwajji  is a great man ' > sumit2.txt "
+              sh"   echo 'testing sumit bhardwajji  is a great brother ' > sumit2.txt "
               sh "git status"
               sh "ls | cat sumit2.txt"
               sh"   git add . "
@@ -49,17 +49,16 @@ node{
              
           checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sumitbhardwajji/notejam.git']]])
               
-          for(int i=0;i>-1;i++){
-          print(i)
-          }
+
             
         }
         }
-  stage("chnagelog"){
-              def change=changelog()
-              print(change)
-  
-  }
+            stage("success notification "){
+                def change=changelog()
+                slackSend color: "#00FF00", message: "Build Successful: ${change}"              
+            }
+    
+    
   }catch(error){
     stage("error"){
           def change=changelog()
