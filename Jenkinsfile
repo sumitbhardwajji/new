@@ -38,9 +38,9 @@ node{
               bat"   git config --global user.name \"sumitbhardwajji\" "
               bat"   git config --global user.email \"sumitbhardwa7303@gmail.com\" "
               bat "git checkout $branch"
-              bat"   echo 'testing sumit bhardwajji tdccb is great hello sfdf ' > sumit2.txt "
+              bat"   echo 'testing sumit bhardwajji tb is great hello sfdf ' > sumit2.txt "
               bat "git status"
-              bat "ls | cat sumit2.txt"
+             // bat "ls | cat sumit2.txt"
               bat"   git add . "
               bat"   git commit -m \"intial\" "
               def l = env.Branch.tokenize("/")
