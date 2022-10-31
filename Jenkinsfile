@@ -32,26 +32,25 @@ node{
          
         
           
-         withCredentials([usernamePassword(credentialsId: 'personal_git_creds', passwordVariable: 'password', usernameVariable: 'username')]) {     
+       
             checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sumitbhardwajji/new.git']]])
              
               bat"   git config --global user.name \"sumitbhardwajji\" "
               bat"   git config --global user.email \"sumitbhardwa7303@gmail.com\" "
               bat "git checkout $branch"
-              bat"   echo 'testing sumit bhardwajji  gt great hello sfdf ' > sumit2.txt "
+              bat"   echo 'testing sumit bhardwajji  git great hello sfdf ' > sumit2.txt "
               bat "git status"
              // bat "ls | cat sumit2.txt"
               bat"   git add . "
               bat"   git commit -m \"intial\" "
               def l = env.Branch.tokenize("/")
               l = l[1]
-              def username= "sumitbhardwajji"
-              def pass= "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"
+       withCredentials([usernamePassword(credentialsId: 'personal_git_creds', passwordVariable: 'password', usernameVariable: 'username')]) {     
               bat" git push https://${username}:${password}@github.com/sumitbhardwajji/new.git HEAD:refs/heads/$l "
-             
+       }      
           checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sumitbhardwajji/notejam.git']]])
 
-         }
+         
             
       
         }
