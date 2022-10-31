@@ -39,7 +39,7 @@ node{
               bat"   git config --global user.name \"sumitbhardwajji\" "
               bat"   git config --global user.email \"sumitbhardwa7303@gmail.com\" "
               bat "git checkout $branch"
-              bat"   echo 'testing sumit bhardwajji t great hello sfdf ' > sumit2.txt "
+              bat"   echo 'testing sumit bhardwajji it great hello sfdf ' > sumit2.txt "
               bat "git status"
              // bat "ls | cat sumit2.txt"
               bat"   git add . "
