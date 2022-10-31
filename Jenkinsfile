@@ -1,6 +1,6 @@
 def changelog(){
   withCredentials([usernamePassword(credentialsId: 'jenkinsCredentials', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {    
-    sh"curl -u ${USERNAME}:${PASSWORD} ${env.BUILD_URL}/api/xml?xpath=/*/changeSet -o file.xml"
+    bat"curl -u ${USERNAME}:${PASSWORD} ${env.BUILD_URL}/api/xml?xpath=/*/changeSet -o file.xml"
         def file = readFile(file: "file.xml") 
         print(file)
         def msg = "Changes deployed through the build:"  
@@ -35,17 +35,17 @@ node{
               
             checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sumitbhardwajji/new.git']]])
              
-              sh"   git config --global user.name \"sumitbhardwajji\" "
-              sh"   git config --global user.email \"sumitbhardwa7303@gmail.com\" "
-              sh "git checkout $branch"
-              sh"   echo 'testing sumit bhardwajji tdccb is great hello sfdf ' > sumit2.txt "
-              sh "git status"
-              sh "ls | cat sumit2.txt"
-              sh"   git add . "
-              sh"   git commit -m \"intial\" "
+              bat"   git config --global user.name \"sumitbhardwajji\" "
+              bat"   git config --global user.email \"sumitbhardwa7303@gmail.com\" "
+              bat "git checkout $branch"
+              bat"   echo 'testing sumit bhardwajji tdccb is great hello sfdf ' > sumit2.txt "
+              bat "git status"
+              bat "ls | cat sumit2.txt"
+              bat"   git add . "
+              bat"   git commit -m \"intial\" "
               def l = env.Branch.tokenize("/")
               l = l[1]
-              sh" git push https://sumitbhardwajji:Ramnagartanda@84 @github.com/sumitbhardwajji/new.git HEAD:refs/heads/$l "
+              bat" git push https://sumitbhardwajji:Ramnagartanda@84 @github.com/sumitbhardwajji/new.git HEAD:refs/heads/$l "
              
           checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sumitbhardwajji/notejam.git']]])
 
