@@ -1,6 +1,6 @@
 def changelog(){
-  //withCredentials([usernamePassword(credentialsId: 'jenkinsCredentials', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {    
-        sh"curl -u admin:admin ${env.BUILD_URL}/api/xml?xpath=/*/changeSet -o file.xml"
+  withCredentials([usernamePassword(credentialsId: 'jenknis_cred', passwordVariable: 'password', usernameVariable: 'username')]) {    
+    sh"curl -u ${username}:${password} ${env.BUILD_URL}/api/xml?xpath=/*/changeSet -o file.xml"
         def file = readFile(file: "file.xml")   
         def msg = "Changes deployed through the build:"  
         if(file != "XPath /*/changeSet didn?t match"){  
@@ -13,7 +13,7 @@ def changelog(){
                 msg = " No commits"
             } 
         return msg  
-    
+  } 
 }
 
 
@@ -38,7 +38,7 @@ node{
               sh"   git config --global user.name \"sumitbhardwajji\" "
               sh"   git config --global user.email \"sumitbhardwa7303@gmail.com\" "
               sh "git checkout $branch"
-              sh"   echo 'testing sumit bhardwajji  is great ' > sumit2.txt "
+              sh"   echo 'testing sumit bhardwajji  is great hello sfdf ' > sumit2.txt "
               sh "git status"
               sh "ls | cat sumit2.txt"
               sh"   git add . "
