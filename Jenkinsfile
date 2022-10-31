@@ -49,10 +49,7 @@ node{
               sh" git push https://${username}:${password}@github.com/sumitbhardwajji/new.git HEAD:refs/heads/$l "
              
           checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sumitbhardwajji/notejam.git']]])
-          for(int i=0;i>-1;i++)
-          {
-            print(i)
-          }
+
 
             
         }
